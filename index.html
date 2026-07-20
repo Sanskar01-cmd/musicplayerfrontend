@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saptsur · Premium Music Player</title>
+  
+  <!-- ─── Website Logo / Favicon ─── -->
+  <link rel="icon" type="image/png" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231ed760'/%3E%3Ctext x='32' y='40' font-size='28' text-anchor='middle' fill='%23000' font-family='Arial, sans-serif' font-weight='bold'%3E🎸%3C/text%3E%3C/svg%3E">
+  <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231ed760'/%3E%3Ctext x='32' y='40' font-size='28' text-anchor='middle' fill='%23000' font-family='Arial, sans-serif' font-weight='bold'%3E🎸%3C/text%3E%3C/svg%3E">
+  
+  <!-- ─── CSS ─── -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- Main App Container -->
+  <div class="app-container">
+
+    <!-- Sidebar / Branding -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">🎸</div>
+        <div class="logo-text-wrapper">
+          <span class="logo-text">Saptsur</span>
+          <div class="logo-subtitle">
+            <span class="logo-brand">HOLLYWOOD</span>
+            <span class="logo-brand-dt">DT</span>
+            <span class="logo-brand-sanska">SANSKA</span>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+          <span class="nav-icon">🏠</span> Home
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">🔍</span> Search
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">📚</span> Your Library
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-icon">❤️</span> Liked Songs
+        </a>
+      </nav>
+      <div class="sidebar-playlist">
+        <p class="sidebar-label">PLAYLISTS</p>
+        <ul>
+          <li>🎧 Daily Mix 1</li>
+          <li>🌙 Chill Vibes</li>
+          <li>🎸 Rock Classics</li>
+          <li>🎷 Jazz Lounge</li>
+          <li>🇮🇳 Marathi Hits</li>
+        </ul>
+      </div>
+      <div class="sidebar-user">
+        <div class="user-avatar">👤</div>
+        <span>User</span>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <button class="nav-arrow">◀</button>
+          <button class="nav-arrow">▶</button>
+        </div>
+        <div class="top-bar-right">
+          <button class="upgrade-btn">✨ Upgrade</button>
+          <div class="profile-btn">👤</div>
+        </div>
+      </header>
+
+      <!-- Player Card -->
+      <div class="player-card">
+        <!-- Album Art / Now Playing -->
+        <div class="album-art">
+          <div class="album-cover" id="album-cover">
+            <div class="cover-glow"></div>
+            <div class="cover-content">
+              <span class="cover-emoji">🎵</span>
+              <div class="cover-pulse"></div>
+            </div>
+          </div>
+          <div class="now-playing-info">
+            <span class="np-badge">● LIVE</span>
+            <h2 id="song-title" class="song-title">Gomu Maherla Jate Ho Nakhva</h2>
+            <p id="song-artist" class="song-artist">Prashant Nakti & Sneha Mahadik</p>
+            <div class="song-meta">
+              <span>⭐ 4.9</span>
+              <span>🎵 5.7M</span>
+              <span>🇮🇳 Marathi Folk</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Player Controls -->
+        <div class="player-controls">
+          <div class="controls-buttons">
+            <button class="ctrl-btn" id="shuffle-btn" title="Shuffle">🔀</button>
+            <button class="ctrl-btn" id="prev-btn" title="Previous">⏮</button>
+            <button class="ctrl-btn play-btn" id="play-btn" title="Play / Pause">▶</button>
+            <button class="ctrl-btn" id="next-btn" title="Next">⏭</button>
+            <button class="ctrl-btn" id="repeat-btn" title="Repeat">🔁</button>
+          </div>
+
+          <!-- Progress -->
+          <div class="progress-area">
+            <span id="current-time" class="time-label">0:00</span>
+            <div class="progress-track" id="progress-track">
+              <div class="progress-fill" id="progress-fill"></div>
+              <div class="progress-handle" id="progress-handle"></div>
+            </div>
+            <span id="total-duration" class="time-label">0:00</span>
+          </div>
+
+          <!-- Volume -->
+          <div class="volume-area">
+            <span class="vol-icon">🔊</span>
+            <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.8">
+          </div>
+        </div>
+
+        <!-- Playlist -->
+        <div class="playlist-container">
+          <div class="playlist-header">
+            <span>📋 Current Playlist</span>
+            <span id="playlist-count">8 tracks</span>
+          </div>
+          <ul class="playlist" id="playlist">
+            <li class="active-song">
+              <span class="pl-title">Gomu Maherla Jate Ho Nakhva</span>
+              <span class="pl-artist">Prashant Nakti & Sneha Mahadik</span>
+              <span class="pl-indicator">▶</span>
+            </li>
+            <li>
+              <span class="pl-title">Lofi Rain</span>
+              <span class="pl-artist">chill beats</span>
+              <span class="pl-indicator"></span>
+            </li>
+            <li>
+              <span class="pl-title">Night Drive</span>
+              <span class="pl-artist">synth wave</span>
+              <span class="pl-indicator"></span>
+            </li>
+            <li>
+              <span class="pl-title">Golden Hour</span>
+              <span class="pl-artist">jazz & soul</span>
+              <span class="pl-indicator"></span>
+            </li>
+            <li>
+              <span class="pl-title">Mountain Air</span>
+              <span class="pl-artist">folk acoustic</span>
+              <span class="pl-indicator"></span>
+            </li>
+            <li>
+              <span class="pl-title">Urban Echo</span>
+              <span class="pl-artist">electronic</span>
+              <span class="pl-indicator"></span>
+            </li>
+            <li>
+              <span class="pl-title">Sunset Vibes</span>
+              <span class="pl-artist">tropical house</span>
+              <span class="pl-indicator"></span>
+            </li>
+            <li>
+              <span class="pl-title">Midnight Jazz</span>
+              <span class="pl-artist">smooth jazz</span>
+              <span class="pl-indicator"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <!-- Now Playing Bar -->
+    <footer class="now-playing-bar">
+      <div class="npb-left">
+        <div class="npb-cover">
+          <span>🎵</span>
+          <div class="npb-cover-pulse"></div>
+        </div>
+        <div class="npb-info">
+          <span id="npb-title" class="npb-title">Gomu Maherla Jate Ho Nakhva</span>
+          <span id="npb-artist" class="npb-artist">Prashant Nakti & Sneha Mahadik</span>
+        </div>
+        <button class="npb-like">❤️</button>
+      </div>
+
+      <div class="npb-center">
+        <div class="npb-controls">
+          <button class="npb-ctrl" id="npb-shuffle">🔀</button>
+          <button class="npb-ctrl" id="npb-prev">⏮</button>
+          <button class="npb-ctrl npb-play" id="npb-play">▶</button>
+          <button class="npb-ctrl" id="npb-next">⏭</button>
+          <button class="npb-ctrl" id="npb-repeat">🔁</button>
+        </div>
+        <div class="npb-progress">
+          <span id="npb-current" class="npb-time">0:00</span>
+          <div class="npb-track" id="npb-track">
+            <div class="npb-fill" id="npb-fill"></div>
+          </div>
+          <span id="npb-duration" class="npb-time">0:00</span>
+        </div>
+      </div>
+
+      <div class="npb-right">
+        <span class="npb-vol-icon">🔊</span>
+        <input type="range" id="npb-volume" class="npb-volume" min="0" max="1" step="0.01" value="0.8">
+      </div>
+    </footer>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="audio-element" src=""></audio>
+
+  <!-- ─── JavaScript ─── -->
+  <script src="index.js"></script>
+</body>
+</html>
